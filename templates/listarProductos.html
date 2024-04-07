@@ -1,0 +1,52 @@
+{%extends './index.html'%} {%block body%}
+<div class="div-contenido-listar-productos">
+  <div class="div-button-agregar">
+    <a href="/vistaAgregarProducto">
+      <button class="button button-agregar">Agregar</button>
+    </a>
+    <a href="/salir">
+      <button class="button button-salir">salir</button>
+    </a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Categoria</th>
+        <th>Foto</th>
+        <th class="th-accion">Accion</th>
+      </tr>
+    </thead>
+    <tbody id="listaP">
+      {%for p in productos%}
+      <tr class="tr-td">
+        <td>{{p['codigo']}}</td>
+        <td>{{p['nombre']}}</td>
+        <td>{{p['precio']}}</td>
+        <td>{{p['nombreCategoria']}}</td>
+        <td class="td-img-listar-productos">
+          <img
+            class="img-listar-productos"
+            src="../static/imagenes/{{p['_id']}}.jpg"
+            alt="imagenProducto"
+          />
+        </td>
+        <td class="td-accion">
+          <a class="edit-icon" href="{{p['_id']}}"
+            ><i class="fa fa-edit text-warning" title="editar"></i
+          ></a>
+
+          <a class="delete-icon" href="{{p['_id']}}">
+
+            <i class="fa fa-trash text-danger" title="eliminar"></i>
+          </a>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{%endblock%}
