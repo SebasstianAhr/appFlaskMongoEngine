@@ -3,15 +3,15 @@ from flask_mongoengine import MongoEngine
     
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = './static/imagenes'
 app.secret_key = "123456789"
-miConexion = pymongo.MongoClient('mongodb://localhost:27017/')
+app.config['UPLOAD_FOLDER'] = './static/imagenes'
+#miConexion = pymongo.MongoClient('mongodb://localhost:27017/')
 app.config['MONGODB_SETTINGS'] = [{
-    "baseDatos": "GESTIONPRODUCTOS",
+    "db": "GESTIONPRODUCTOS",
     "host": "localhost",
     "port": 27017
 }]
-baseDatos = MongoEngine(app)
+db = MongoEngine(app)
 
 '''
 baseDatos = miConexion['GESTIONPRODUCTOS']
